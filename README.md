@@ -22,7 +22,6 @@ Copy the files to your Claude Code project directory:
 ├── commands/
 │   └── spec-mode.md
 └── agents/
-    ├── spec-orchestrator.md
     ├── spec-requirements.md
     ├── spec-design.md
     ├── spec-tasks.md
@@ -213,11 +212,11 @@ If requirements or design need changes during a later phase:
 Go back to requirements
 ```
 
-The orchestrator will allow you to return to any previous phase.
+The workflow will allow you to return to any previous phase.
 
 ### Custom Spec Names
 
-The orchestrator derives a spec name from your description, but you can provide your own:
+The workflow derives a spec name from your description, but you can provide your own:
 
 ```
 /spec-mode add caching layer
@@ -236,9 +235,6 @@ Execute task 5 from achievement-system
 ```
 
 ## Agents Reference
-
-### `spec-orchestrator`
-Coordinates the full workflow, manages phase transitions, and enforces approval gates.
 
 ### `spec-requirements`
 Gathers requirements through iteration, produces structured requirements.md with EARS criteria.
@@ -264,7 +260,7 @@ Implements individual tasks, verifies against requirements, marks progress.
 To extend this workflow:
 
 1. Add new agents in `.claude/agents/`
-2. Update orchestrator to invoke new agents
+2. Update `/spec-mode` command to invoke new agents
 3. Maintain approval gates between phases
 4. Keep documentation up to date
 
