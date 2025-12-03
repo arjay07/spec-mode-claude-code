@@ -20,7 +20,8 @@ Copy the files to your Claude Code project directory:
 ```
 .claude/
 ├── commands/
-│   └── spec-mode.md
+│   ├── spec-mode.md
+│   └── spec-exec.md
 └── agents/
     ├── spec-requirements.md
     ├── spec-design.md
@@ -86,14 +87,17 @@ Creates `.claude/specs/<spec-name>/tasks.md` with:
 
 ### Phase 4: Execution
 
+**Command**: `/spec-exec <spec-name> <task-number>`
 **Agent**: `spec-executor`
 
 Executes individual tasks from `tasks.md`:
+- Marks task as in progress (`- [-]`)
+- Spawns spec-executor agent to implement the task
 - Reads requirements, design, and tasks for context
 - Implements one task at a time
 - Verifies against acceptance criteria
-- Marks tasks complete
-- Reports progress and next steps
+- Marks task complete (`- [x]`) after agent reports back
+- Reports progress summary
 
 **Execution is manual**: User controls which tasks to execute and when.
 
@@ -110,22 +114,27 @@ Executes individual tasks from `tasks.md`:
 After spec workflow completes:
 
 ```
-Execute task 1 from dark-mode-toggle
+/spec-exec dark-mode-toggle 1
+```
+
+This command will:
+1. Mark task 1 as in progress
+2. Execute the task implementation
+3. Mark task 1 as complete
+4. Show summary of changes
+
+### Continue with Next Task
+
+```
+/spec-exec dark-mode-toggle 2
 ```
 
 ### Check Progress
 
-```
-What's the next task for dark-mode-toggle?
-```
-
-### Resume Work
-
-If you return later:
-
-```
-Execute the next incomplete task from dark-mode-toggle
-```
+Open `.claude/specs/dark-mode-toggle/tasks.md` to see task status:
+- `[ ]` = pending
+- `[-]` = in progress
+- `[x]` = completed
 
 ## Benefits
 
@@ -230,8 +239,7 @@ Custom name: `redis-cache-integration`
 If you have an existing spec with incomplete tasks:
 
 ```
-What tasks are left in achievement-system?
-Execute task 5 from achievement-system
+/spec-exec achievement-system 5
 ```
 
 ## Agents Reference
@@ -246,7 +254,7 @@ Researches codebase patterns, creates technical design with architecture and com
 Converts design into actionable, test-driven implementation tasks.
 
 ### `spec-executor`
-Implements individual tasks, verifies against requirements, marks progress.
+Implements individual tasks and verifies against requirements. Task status management (marking in progress/complete) is handled by the `/spec-exec` command.
 
 ## Limitations
 

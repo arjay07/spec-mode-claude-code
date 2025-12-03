@@ -103,17 +103,11 @@ If task is already completed, inform the user:
 - Verify against the acceptance criteria from requirements.md
 - Ensure integration points work correctly
 
-### Step 6: Mark Task Complete
-Update tasks.md to change the task from:
-`- [ ] **1.1**` (or `- [ ] **Task N**:`)
-to:
-`- [x] **1.1**` (or `- [x] **Task N**:`)
-
-### Step 7: STOP and Report
+### Step 6: STOP and Report
 
 **CRITICAL: Once you complete the requested task, STOP and let the user review. DO NOT automatically proceed to the next task.**
 
-Provide a completion summary, then wait for user instruction.
+Provide a completion summary with the implementation details.
 
 ## Implementation Guidelines
 
@@ -192,8 +186,6 @@ If requirements.md or design.md are missing:
 - **ALWAYS** read requirements.md, design.md, and tasks.md before executing
 - Only implement **ONE task** per execution
 - If task has sub-tasks, start with sub-tasks
-- Always mark the task complete after implementation
-- Don't modify other tasks in tasks.md
 - **STOP after completing** - do NOT automatically continue to next task
 - Report any issues or blockers clearly
 - Stay focused on the specific task
