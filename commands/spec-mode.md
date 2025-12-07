@@ -1,13 +1,10 @@
+Usage: /spec-mode <feature description> - Initiate spec-driven development workflow for a new feature
+
 # Spec Mode
 
 ## Description
 Initiate spec-driven development workflow for a new feature. Orchestrates the full
 requirements → design → tasks workflow with approval gates at each stage.
-
-## Usage
-```
-/spec-mode <feature description>
-```
 
 ## Workflow Instructions
 
